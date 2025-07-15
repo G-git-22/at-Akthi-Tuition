@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Enquiry - Akthi Tuition Centre</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="assets/style.css" />
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+    }
+  </style>
+</head>
+
+<body class="bg-gradient-to-b from-blue-50 to-white text-gray-800">
+
+  <!-- Header -->
+  <header class="bg-blue-600 text-white p-4 sticky top-0 z-50">
+    <div class="container mx-auto flex justify-between items-center">
+    <div class="flex items-center gap-2">
+       <img src="assets/images/logo.png" alt="Akthi Logo" class="w-12 h-12 rounded-full shadow-lg">
+       <span class="text-xl font-bold text-white">Akthi Tuition</span>
+    </div>
+
+      <nav class="space-x-4 text-sm">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="courses.html">Courses</a>
+        <a href="fees.html">Fees</a>
+        <a href="enquiry.html" class="text-yellow-300 underline font-semibold">Enquiry</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Enquiry Form -->
+  <section class="p-10 max-w-xl mx-auto bg-white shadow-md rounded-lg mt-10">
+    <h2 class="text-2xl font-bold text-center mb-6 text-blue-700">📩 Enquiry Form</h2>
+    <form id="enquiry-form" class="space-y-4">
+      <div>
+        <label for="name" class="block font-semibold mb-1">Name</label>
+        <input type="text" id="name" name="name" class="w-full border border-gray-300 p-2 rounded" required>
+      </div>
+      <div>
+        <label for="class" class="block font-semibold mb-1">Class</label>
+        <input type="text" id="class" name="class" class="w-full border border-gray-300 p-2 rounded" required>
+      </div>
+      <div>
+        <label for="subject" class="block font-semibold mb-1">Subject</label>
+        <input type="text" id="subject" name="subject" class="w-full border border-gray-300 p-2 rounded" required>
+      </div>
+      <div>
+        <label for="contact" class="block font-semibold mb-1">Contact Number</label>
+        <input type="tel" id="contact" name="contact" class="w-full border border-gray-300 p-2 rounded" required>
+      </div>
+      <div>
+        <label for="message" class="block font-semibold mb-1"> Comments (if any)</label>
+        <textarea id="message" name="message" class="w-full border border-gray-300 p-2 rounded" rows="3" required></textarea>
+      </div>
+      <div>
+        <label for="referral" class="block font-semibold mb-1">Referral Code (Optional)</label>
+        <input type="text" id="referral" name="referral" class="w-full border border-gray-300 p-2 rounded">
+      </div>
+      <button type="submit" class="w-full bg-blue-600 text-white py-2 rounded font-semibold hover:bg-blue-700 transition">Submit</button>
+    </form>
+    <p id="response" class="text-center mt-4 text-green-600 font-medium hidden">✅ Submitted successfully!</p>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-blue-600 text-white p-5 text-center mt-10">
+    <p>&copy; 2025 Akthi Tuition Centre. All Rights Reserved.</p>
+  </footer>
+
+  <!-- JS Script -->
+  <script>
+    const scriptURL = 'YOUR_DEPLOYED_GOOGLE_SCRIPT_URL_HERE';
+    const form = document.getElementById('enquiry-form');
+    const responseMsg = document.getElementById('response');
+
+    form.addEventListener('submit', e => {
+      e.preventDefault();
+      const data = {
+        Name: form.name.value,
+        Class: form.class.value,
+        Subject: form.subject.value,
+        Contact: form.contact.value,
+        Message: form.message.value,
+        Referral: form.referral.value
+      };
+
+      fetch(scriptURL, {
+        method: 'POST',
+        body: JSON.stringify(data)
+      })
+      .then(response => {
+        responseMsg.classList.remove('hidden');
+        form.reset();
+      })
+      .catch(error => alert('Something went wrong. Please try again.'));
+    });
+  </script>
+
+</body>
+</html>
+

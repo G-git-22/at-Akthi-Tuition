@@ -1,0 +1,24 @@
+/* Custom Styles for Akthi Tuition Website */
+
+body {
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Smooth transition for buttons and links */
+button,
+a {
+  transition: all 0.3s ease;
+}
+
+/* Input and Textarea focus outline */
+input:focus,
+textarea:focus {
+  outline: none;
+  border-color: #3b82f6; /* Tailwind blue-500 */
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.3);
+}
+
+/* Responsive heading spacing */
+h1, h2, h3, h4 {
+  letter-spacing: 0.5px;
+}
