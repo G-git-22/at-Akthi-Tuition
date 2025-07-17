@@ -1,5 +1,5 @@
 // Enquiry Form Submission Script for Google Sheets
-const scriptURL = 'YOUR_DEPLOYED_GOOGLE_SCRIPT_URL_HERE';
+const scriptURL = 'https://script.google.com/macros/s/AKfycbyra2aNSIW2BFQzFhXgsA5ftqKk2i5Lr8Y_39ZrvXHssU1cXbfy9hSWCaHbNAQqB1gAtQ/exec';
 const form = document.getElementById('enquiry-form');
 const responseMsg = document.getElementById('response');
 
